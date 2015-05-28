@@ -21,7 +21,7 @@ jQuery plugin for replacing img-tags with SVG content
 3. Call the plugin:
 
 	```javascript
-	$("#element").panr(function() {
+	$("#element").svgInject(function() {
 		// Injection complete
 	});
 	```
