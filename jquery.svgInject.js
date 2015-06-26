@@ -142,12 +142,14 @@
                 h: $el.attr('height')
             };
 
+            var _this = this;
+
             // If the file is not in the cache, we request it 
-            if(this._cache.isFileInCache(imgURL)){
+            if(!this._cache.isFileInCache(imgURL)){
                 $.get(imgURL, function(data) {
                     var svg = $(data).find('svg');
                     // File is put into the cache
-                    _this.addEntryData( imgURL, svg );
+                    _this._cache.addEntryData( imgURL, svg );
                 });  
             }
 
