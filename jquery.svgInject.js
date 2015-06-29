@@ -13,7 +13,7 @@
      * Cache that helps to reduce requests
      */
     function Cache(){
-        this._entries = [];
+        this._entries = {};
     }
 
     /**
@@ -123,9 +123,12 @@
         this.$element = $(element);
         this.callback = options;
         this._name = pluginName;
-        this._cache = new Cache();
+        this._cache = Plugin._cache;
         this.init();
     }
+
+    Plugin._cache = new Cache();
+
     Plugin.prototype = {
         init: function() {
             this.$element.css('visibility', 'hidden');
@@ -205,6 +208,7 @@
             }
         }
     };
+
     $.fn[pluginName] = function(options) {
         return this.each(function() {
             if (!$.data(this, 'plugin_' + pluginName)) {
