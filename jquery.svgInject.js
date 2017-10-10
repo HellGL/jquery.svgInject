@@ -8,6 +8,7 @@
 
 ;(function($, window, document, undefined) {
     var pluginName = 'svgInject';
+	var injectIdx=0;
 
     /**
      * Cache that helps to reduce requests
@@ -139,7 +140,8 @@
             var imgID = $el.attr('id');
             var imgClass = $el.attr('class');
             var imgData = $el.clone(true).data();
-
+			var key='injectKey-'+(injectIdx++);
+			$el.addClass(key);
             var dimensions = {
                 w: $el.attr('width'),
                 h: $el.attr('height')
@@ -158,6 +160,7 @@
 
             // We add an entry to the cache with the given image url
             this._cache.addEntry(imgURL , function( svg ){
+				var $el=$('.'+key);
                 // When the entry is loaded, the image gets replaces by the clone of the loaded svg
                 _this.replaceIMGWithSVG($el, svg.clone(), imgID, imgClass, imgURL, imgData, dimensions, callback);
             });
