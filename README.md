@@ -1,3 +1,5 @@
+**WARNING: This repo is archived for the obvious reasons and you really should not use it. It only here because of nostalgia**
+
 # jQuery svgInject
 
 jQuery plugin for replacing img-tags with SVG content
